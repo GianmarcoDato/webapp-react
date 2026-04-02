@@ -1,16 +1,25 @@
 import { useState } from 'react'
-//import reactLogo from './assets/react.svg'
+import HomePage from './pages/HomePage'
+import MoviesPage from './pages/MoviesPage'
+import DefaultLayout from './layouts/DefaultLayout'
+import DetailsPage from './pages/DetailsPage'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
-      <div class='page'></div>
-
-
-      <h1>Benvenuto in movies.js</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<DefaultLayout />}>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/movies' element={<MoviesPage />} />
+            <Route path='/details/:id' element={<DetailsPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
